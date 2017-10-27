@@ -1,4 +1,3 @@
-import ckan.model as model
 import ckan.plugins
 import nose
 import paste.fixture
@@ -11,11 +10,13 @@ eq_ = nose.tools.eq_
 
 test_msg = 'this is a status message'
 
+
 class TestStatusMessage(object):
     @classmethod
     def setup_class(cls):
         cls.app = paste.fixture.TestApp(pylons.test.pylonsapp)
-        ckan.plugins.load('status')
+        if not ckan.plugins.plugin_loaded('status'):
+            ckan.plugins.load('status')
 
     @classmethod
     def teardown_class(cls):
@@ -23,11 +24,16 @@ class TestStatusMessage(object):
 
     def _set_msg(self, has_status_message):
         if has_status_message:
-            pylons.config['status_get_message'] = test_msg
-        elif 'status_get_message' in pylons.config:
-            del pylons.config['status_get_message']
+            pylons.config['ckanext.status.message'] = test_msg
+        elif 'ckanext.status.message' in pylons.config:
+            del pylons.config['ckanext.status.message']
 
     def test_helper_gets_message_when_present(self):
         self._set_msg(has_status_message = True)
         msg = status_get_message()
         eq_(test_msg, msg)
+
+    def test_helper_gets_none_when_absent(self):
+        self._set_msg(has_status_message = False)
+        msg = status_get_message()
+        eq_(None, msg)
