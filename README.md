@@ -1,4 +1,7 @@
 # ckanext-status
+
+[![Travis branch](https://img.shields.io/travis/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://travis-ci.org/NaturalHistoryMuseum/ckanext-status) [![Coveralls github branch](https://img.shields.io/coveralls/github/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://coveralls.io/github/NaturalHistoryMuseum/ckanext-status)
+
 A CKAN plugin to display a simple bar with a status message at the head of a page.
 
 # Setup
