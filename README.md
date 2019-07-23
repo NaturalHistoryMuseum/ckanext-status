@@ -1,41 +1,88 @@
+<img src=".github/nhm-logo.svg" align="left" width="150px" height="100px" hspace="40"/>
+
 # ckanext-status
 
-[![Travis branch](https://img.shields.io/travis/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://travis-ci.org/NaturalHistoryMuseum/ckanext-status) [![Coveralls github branch](https://img.shields.io/coveralls/github/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://coveralls.io/github/NaturalHistoryMuseum/ckanext-status)
+[![Travis](https://img.shields.io/travis/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://travis-ci.org/NaturalHistoryMuseum/ckanext-status)
+[![Coveralls](https://img.shields.io/coveralls/github/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://coveralls.io/github/NaturalHistoryMuseum/ckanext-status)
+[![CKAN](https://img.shields.io/badge/ckan-2.9.0a-orange.svg?style=flat-square)](https://github.com/ckan/ckan)
 
-A CKAN plugin to display a simple bar with a status message at the head of a page.
+_A CKAN extension that adds a 'status' bar to the top of the page._
 
-# Setup
-1. Clone the repository into the virtual env's `src` folder:
-```bash
-cd /usr/lib/ckan/default/src/
-git clone https://github.com/NaturalHistoryMuseum/ckanext-status.git
-```
+
+# Overview
+
+This extension allows maintainers to add a simple static message to the top of every page by setting a single configuration option. For example, it can be used to notify users of planned downtime, unexpected issues with the site, or new features.
+
+
+# Installation
+
+Path variables used below:
+- `$INSTALL_FOLDER` (i.e. where CKAN is installed), e.g. `/usr/lib/ckan/default`
+- `$CONFIG_FILE`, e.g. `/etc/ckan/default/development.ini`
+
+1. Clone the repository into the `src` folder:
+
+  ```bash
+  cd $INSTALL_FOLDER/src
+  git clone https://github.com/NaturalHistoryMuseum/ckanext-status.git
+  ```
 
 2. Activate the virtual env:
-```bash
-. /usr/lib/ckan/default/bin/activate
-```
 
-3. Run setup.py:
-```bash
-cd /usr/lib/ckan/default/src/ckanext-status
-python setup.py develop
-```
+  ```bash
+  . $INSTALL_FOLDER/bin/activate
+  ```
 
-4. Add 'status' to the list of plugins in your config file:
-```
-ckan.plugins = ... status
-```
+3. Install the requirements from requirements.txt:
+
+  ```bash
+  cd $INSTALL_FOLDER/src/ckanext-status
+  pip install -r requirements.txt
+  ```
+
+4. Run setup.py:
+
+  ```bash
+  cd $INSTALL_FOLDER/src/ckanext-status
+  python setup.py develop
+  ```
+
+5. Add 'status' to the list of plugins in your `$CONFIG_FILE`:
+
+  ```ini
+  ckan.plugins = ... status
+  ```
 
 # Configuration
-To turn it on, set a message in the config file:
-```
-ckanext.status.message = Everything is working perfectly
+
+There is currently only one option that can be specified in your .ini config file.
+
+Name|Description|Options
+--|--|--
+`ckanext.status.message`|The message for the status bar. If none, no bar is shown.|
+
+
+# Usage
+
+To turn the status bar on, set the `ckanext.status.message` config option in `$CONFIG_FILE`. To deactivate it, remove or comment out the config option.
+
+## Templates
+
+This extension adds content to the `{% block skip %}` section of `page.html`. To add it elsewhere:
+
+```html+jinja
+{% if h.status_get_message() %}
+    {% resource 'ckanext-status/main' %}
+    <p id="status-bar">{{ h.status_get_message() }}</p>
+{% endif %}
 ```
 
-To turn it off, simply remove the config option (or comment it out).
 
 # Testing
+
+_Test coverage is currently extremely limited._
+
+To run the tests, use nosetests inside your virtualenv. The `--nocapture` flag will allow you to see the debug statements.
 ```bash
-nosetests --ckan --with-pylons=/path/to/your/dev/config ckanext/status/tests
+nosetests --ckan --with-pylons=$TEST_CONFIG_FILE --where=$INSTALL_FOLDER/src/ckanext-status --nologcapture --nocapture
 ```
