@@ -28,7 +28,7 @@ class TestStatusMessage(TestBase):
     def test_helper_gets_none_when_absent(self):
         ''' '''
         # make sure it's not in the config
-        self.config.remove([u'ckanext.status.message'])
+        self.config.remove(u'ckanext.status.message')
         assert u'ckanext.status.message' not in self.config.current
         msg = status_get_message()
         nose.tools.assert_equal(None, msg)
