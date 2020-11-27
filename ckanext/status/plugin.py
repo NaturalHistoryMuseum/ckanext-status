@@ -19,12 +19,11 @@ class StatusPlugin(SingletonPlugin):
     def update_config(self, config):
         '''
 
-        :param config: 
+        :param config:
 
         '''
         toolkit.add_template_directory(config, u'theme/templates')
-        toolkit.add_public_directory(config, u'theme/public')
-        toolkit.add_resource(u'theme/public', u'ckanext-status')
+        toolkit.add_resource(u'theme/assets', u'ckanext-status')
 
     ## ITemplateHelpers
     def get_helpers(self):
