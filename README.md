@@ -5,6 +5,7 @@
 [![Travis](https://img.shields.io/travis/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://travis-ci.org/NaturalHistoryMuseum/ckanext-status)
 [![Coveralls](https://img.shields.io/coveralls/github/NaturalHistoryMuseum/ckanext-status/master.svg?style=flat-square)](https://coveralls.io/github/NaturalHistoryMuseum/ckanext-status)
 [![CKAN](https://img.shields.io/badge/ckan-2.9.1-orange.svg?style=flat-square)](https://github.com/ckan/ckan)
+[![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue.svg?style=flat-square)](https://www.python.org/)
 
 _A CKAN extension that adds a 'status' bar to the top of the page._
 
@@ -84,7 +85,7 @@ _Test coverage is currently extremely limited._
 To run the tests in this extension, there is a Docker compose configuration available in this
 repository to make it easy.
 
-To run the tests against ckan 2.9.x on Python2:
+To run the tests against ckan 2.9.x on Python3:
 
 1. Build the required images
 ```bash
@@ -99,4 +100,4 @@ docker-compose build
 docker-compose run ckan
 ```
 
-The ckan image uses the Dockerfile in the `docker/` folder which is based on `openknowledge/ckan-dev:2.9-py2`.
+The ckan image uses the Dockerfile in the `docker/` folder which is based on `openknowledge/ckan-dev:2.9`.

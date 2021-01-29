@@ -14,19 +14,19 @@ class StatusPlugin(SingletonPlugin):
     implements(interfaces.IConfigurer, inherit=True)
     implements(interfaces.ITemplateHelpers)
 
-    ## IConfigurer
+    # IConfigurer
     def update_config(self, config):
         '''
 
         :param config:
 
         '''
-        toolkit.add_template_directory(config, u'theme/templates')
-        toolkit.add_resource(u'theme/assets', u'ckanext-status')
+        toolkit.add_template_directory(config, 'theme/templates')
+        toolkit.add_resource('theme/assets', 'ckanext-status')
 
-    ## ITemplateHelpers
+    # ITemplateHelpers
     def get_helpers(self):
         ''' '''
         return {
-            u'status_get_message': status_get_message
+            'status_get_message': status_get_message
         }

@@ -15,4 +15,4 @@ def status_get_message():
     :rtype: string
     '''
 
-    return toolkit.config.get(u'ckanext.status.message', None)
+    return toolkit.config.get('ckanext.status.message', None)
