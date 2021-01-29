@@ -4,9 +4,8 @@
 # This file is part of ckanext-status
 # Created by the Natural History Museum in London, UK
 
-from ckanext.status.lib.helpers import status_get_message
-
 from ckan.plugins import SingletonPlugin, implements, interfaces, toolkit
+from ckanext.status.lib.helpers import status_get_message
 
 
 class StatusPlugin(SingletonPlugin):
@@ -30,4 +29,4 @@ class StatusPlugin(SingletonPlugin):
         ''' '''
         return {
             u'status_get_message': status_get_message
-            }
+        }

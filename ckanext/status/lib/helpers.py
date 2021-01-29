@@ -8,11 +8,11 @@ from ckan.plugins import toolkit
 
 
 def status_get_message():
-    '''Retrieve status message from config file
+    '''
+    Retrieve status message from config file
 
     :returns: status message specified in config file (or None if not specified)
     :rtype: string
-
     '''
 
     return toolkit.config.get(u'ckanext.status.message', None)
