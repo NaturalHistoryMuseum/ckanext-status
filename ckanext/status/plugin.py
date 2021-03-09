@@ -4,9 +4,8 @@
 # This file is part of ckanext-status
 # Created by the Natural History Museum in London, UK
 
-from ckanext.status.lib.helpers import status_get_message
-
 from ckan.plugins import SingletonPlugin, implements, interfaces, toolkit
+from ckanext.status.lib.helpers import status_get_message
 
 
 class StatusPlugin(SingletonPlugin):
@@ -15,20 +14,19 @@ class StatusPlugin(SingletonPlugin):
     implements(interfaces.IConfigurer, inherit=True)
     implements(interfaces.ITemplateHelpers)
 
-    ## IConfigurer
+    # IConfigurer
     def update_config(self, config):
         '''
 
-        :param config: 
+        :param config:
 
         '''
-        toolkit.add_template_directory(config, u'theme/templates')
-        toolkit.add_public_directory(config, u'theme/public')
-        toolkit.add_resource(u'theme/public', u'ckanext-status')
+        toolkit.add_template_directory(config, 'theme/templates')
+        toolkit.add_resource('theme/assets', 'ckanext-status')
 
-    ## ITemplateHelpers
+    # ITemplateHelpers
     def get_helpers(self):
         ''' '''
         return {
-            u'status_get_message': status_get_message
-            }
+            'status_get_message': status_get_message
+        }

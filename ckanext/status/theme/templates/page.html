@@ -2,7 +2,7 @@
 
 {% block skip %}
     {% if h.status_get_message() %}
-        {% resource 'ckanext-status/main' %}
+        {% asset 'ckanext-status/main' %}
         <p id="status-bar">{{ h.status_get_message() }}</p>
     {% endif %}
     {{ super() }}
