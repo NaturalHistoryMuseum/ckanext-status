@@ -12,7 +12,10 @@ _A CKAN extension that adds a 'status' bar to the top of the page._
 
 # Overview
 
-This extension allows maintainers to add a simple static message to the top of every page by setting a single configuration option. For example, it can be used to notify users of planned downtime, unexpected issues with the site, or new features.
+This extension allows maintainers to add a simple static message to the top of every page by setting
+a single configuration option.
+For example, it can be used to notify users of planned downtime, unexpected issues with the site, or
+new features.
 
 
 # Installation
@@ -54,18 +57,13 @@ Path variables used below:
   ckan.plugins = ... status
   ```
 
-# Configuration
-
-There is currently only one option that can be specified in your .ini config file.
-
-Name|Description|Options
---|--|--
-`ckanext.status.message`|The message for the status bar. If none, no bar is shown.|
-
 
 # Usage
 
-To turn the status bar on, set the `ckanext.status.message` config option in `$CONFIG_FILE`. To deactivate it, remove or comment out the config option.
+To turn the status bar on, login as a sysadmin and head to the system configuration page.
+There, just set the `ckanext.status.message` config option.
+To deactivate it, just remove the contents of the text box.
+
 
 ## Templates
 
