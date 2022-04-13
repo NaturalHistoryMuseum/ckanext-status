@@ -24,6 +24,14 @@ class StatusPlugin(SingletonPlugin):
         toolkit.add_template_directory(config, 'theme/templates')
         toolkit.add_resource('theme/assets', 'ckanext-status')
 
+    # IConfigurer
+    def update_config_schema(self, schema):
+        ignore_missing = toolkit.get_validator('ignore_missing')
+        schema.update({
+            'ckanext.status.message': [ignore_missing, str],
+        })
+        return schema
+
     # ITemplateHelpers
     def get_helpers(self):
         ''' '''
