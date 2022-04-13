@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% import 'macros/form.html' as form %}
+
+{% block admin_form %}
+    {{ super() }}
+    {{ form.input('ckanext.status.message', id='field-ckanext.status.message',
+                  label=_('Status message'), value=data['ckanext.status.message'],
+                  error=errors['ckanext.status.message']) }}
+{% endblock %}
+
+
+{% block admin_form_help %}
+    {{ super() }}
+    <p><strong>Status message:</strong> Specify this to place a status message on the site</p>
+{% endblock %}
