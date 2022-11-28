@@ -1,0 +1,18 @@
+{
+  "name": "ckanext-status",
+  "version": "2.1.0",
+  "description": "A CKAN extension that adds a 'status' bar to the top of the page.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NaturalHistoryMuseum/ckanext-status.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/NaturalHistoryMuseum/ckanext-status/issues"
+  },
+  "homepage": "https://github.com/NaturalHistoryMuseum/ckanext-status",
+  "dependencies": {
+    "less": "^4.1.3"
+  }
+}

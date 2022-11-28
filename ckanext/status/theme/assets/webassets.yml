@@ -1,4 +1,7 @@
 main:
   output: ckanext-status/%(version)s_main.css
+  filters: less
+  config:
+    LESS_BIN: ../../../../../node_modules/less/bin/lessc
   contents:
-    - css/status.css
+    - less/status.less
