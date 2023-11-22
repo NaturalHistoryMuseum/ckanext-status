@@ -5,7 +5,7 @@
 # Created by the Natural History Museum in London, UK
 
 from ckan.plugins import SingletonPlugin, implements, interfaces, toolkit
-from ckanext.status.lib.helpers import status_get_message
+from ckanext.status.lib.helpers import status_get_message, status_enable_html
 
 
 class StatusPlugin(SingletonPlugin):
@@ -33,4 +33,7 @@ class StatusPlugin(SingletonPlugin):
 
     # ITemplateHelpers
     def get_helpers(self):
-        return {'status_get_message': status_get_message}
+        return {
+            'status_get_message': status_get_message,
+            'status_enable_html': status_enable_html,
+        }
