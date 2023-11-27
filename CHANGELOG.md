@@ -1,5 +1,28 @@
 # Changelog
 
+## v2.3.0 (2023-11-27)
+
+### Feature
+
+- add markdown/html support
+
+### Fix
+
+- set the background by css var and change default colour to purple
+
+### Tests
+
+- fix test to get message, add new test for markdown parsing
+
+### Chores/Misc
+
+- add regex for version line in citation file
+- add citation.cff to list of files with version
+- add contributing guidelines
+- add code of conduct
+- add citation file
+- update support.md links
+
 ## v2.2.8 (2023-07-17)
 
 ### Docs
