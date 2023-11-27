@@ -5,6 +5,11 @@
 # Created by the Natural History Museum in London, UK
 
 from ckan.plugins import toolkit
+import markdown
+
+
+def status_enable_html():
+    return toolkit.asbool(toolkit.config.get('ckanext.status.enable_html', True))
 
 
 def status_get_message():
@@ -15,4 +20,7 @@ def status_get_message():
     :rtype: string
     """
 
-    return toolkit.config.get('ckanext.status.message', None)
+    status_message = toolkit.config.get('ckanext.status.message', None)
+    if status_message and status_enable_html():
+        status_message = markdown.markdown(status_message)
+    return status_message

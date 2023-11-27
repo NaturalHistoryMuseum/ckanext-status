@@ -3,7 +3,13 @@
 {% block skip %}
     {% if h.status_get_message() %}
         {% asset 'ckanext-status/main' %}
-        <p id="status-bar">{{ h.status_get_message() }}</p>
+        <div id="status-bar">
+            {% if h.status_enable_html() %}
+                {{ h.status_get_message()|safe }}
+            {% else %}
+                {{ h.status_get_message() }}
+            {% endif %}
+        </div>
     {% endif %}
     {{ super() }}
 {% endblock %}

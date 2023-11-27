@@ -1,8 +1,17 @@
 #status-bar {
   text-align: center;
-  background-color: #195d0d;
-  color: #ffffff;
+  background-color: var(--ckanext-status-bar-bg, #772e8a);
+  color: var(--ckanext-status-bar-fg, #ffffff);
   margin: 0;
   font-size: 1.3em;
   padding: 5px 0 10px;
+
+  & p {
+    margin: 0;
+  }
+
+  & a {
+    color: var(--ckanext-status-bar-fg, #ffffff);
+    text-decoration: underline;
+  }
 }
