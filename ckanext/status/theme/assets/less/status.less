@@ -15,3 +15,111 @@
     text-decoration: underline;
   }
 }
+
+.status-subheading {
+  position: relative;
+  top: -1em;
+  width: max-content;
+  display: grid;
+  gap: 5px;
+
+  & .status-updated {
+    font-size: 0.8em;
+  }
+}
+
+.status-message {
+  padding: 1em;
+  text-align: center;
+  font-size: 1.3em;
+  margin: 2em auto;
+
+  & > p {
+    margin: 0;
+  }
+}
+
+.status-group-title {
+  text-align: center;
+}
+
+.status-grid {
+  display: grid;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 1em;
+
+  &:not(:last-child) {
+    padding-bottom: 2em;
+  }
+
+  @media (min-width: 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  & .status-item {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'label help'
+      'value value';
+    gap: 10px;
+    padding: 1em;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+
+    &.status-item--good {
+      background: var(--ckanext-status-good-bg, #e5fee5);
+      border-color: var(--ckanext-status-good-border, #30ff2e);
+    }
+
+    &.status-item--ok {
+      background: var(--ckanext-status-okay-bg, #fefce5);
+      border-color: var(--ckanext-status-okay-border, #ffe600);
+    }
+
+    &.status-item--bad {
+      background: var(--ckanext-status-bad-bg, #feeae6);
+      border-color: var(--ckanext-status-bad-border, #fa3608);
+    }
+
+    &.status-item--neutral {
+      background: var(--ckanext-status-neutral-bg, #eee);
+      border-color: var(--ckanext-status-neutral-border, #ccc);
+    }
+
+    & .status-item-label {
+      font-weight: bold;
+      grid-area: label;
+    }
+
+    & .status-item-value {
+      grid-area: value;
+    }
+
+    & .status-item-help {
+      grid-area: help;
+      position: relative;
+      & > div {
+        display: none;
+        font-size: 0.9em;
+        position: absolute;
+        top: 0;
+        right: 1.5em;
+        background: var(--ckanext-status-neutral-bg, #eee);
+        border: 1px solid var(--ckanext-status-neutral-border, #ccc);
+        border-radius: 5px;
+        max-width: 200px;
+        width: max-content;
+        padding: 5px;
+        z-index: 100;
+      }
+
+      & > i:hover + div {
+        display: block;
+      }
+    }
+  }
+}
