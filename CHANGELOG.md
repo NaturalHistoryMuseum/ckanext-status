@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.4.0 (2024-07-08)
+
+### Feature
+
+- add link to status page in status bar
+- add extensible status report page
+
+### Docs
+
+- update readme with new status page info
+
+### Chores/Misc
+
+- add build section to read the docs config
+
 ## v2.3.0 (2023-11-27)
 
 ### Feature
