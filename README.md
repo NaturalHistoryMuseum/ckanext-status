@@ -9,17 +9,17 @@
 [![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue.svg?style=flat-square)](https://www.python.org/)
 [![Docs](https://img.shields.io/readthedocs/ckanext-status?style=flat-square)](https://ckanext-status.readthedocs.io)
 
-_A CKAN extension that adds a 'status' bar to the top of the page._
+_A CKAN extension that adds a 'status' bar and an extensible system status page._
 
 <!--header-end-->
 
 # Overview
 
 <!--overview-start-->
-This extension allows maintainers to add a simple static message to the top of every page by setting
-a single configuration option.
-For example, it can be used to notify users of planned downtime, unexpected issues with the site, or
-new features.
+This extension allows maintainers to add a simple static message to the top of every page by setting a single configuration option.
+For example, it can be used to notify users of planned downtime, unexpected issues with the site, or new features.
+
+It also adds a status page giving an overview of the health of various systems. By default this has very few items, but it is easily extensible by other CKAN extensions.
 
 <!--overview-end-->
 
@@ -82,12 +82,12 @@ Installing from a `pyproject.toml` in editable mode (i.e. `pip install -e`) requ
 # Usage
 
 <!--usage-start-->
+
+## Status bar
+
 To turn the status bar on, login as a sysadmin and head to the system configuration page.
 There, just set the `ckanext.status.message` config option.
 To deactivate it, just remove the contents of the text box.
-
-
-## Templates
 
 This extension adds content to the `{% block skip %}` section of `page.html`. To add it elsewhere:
 
@@ -96,6 +96,30 @@ This extension adds content to the `{% block skip %}` section of `page.html`. To
     {% resource 'ckanext-status/main' %}
     <p id="status-bar">{{ h.status_get_message() }}</p>
 {% endif %}
+```
+
+## Status page
+
+The status page can be found at `/status`, or the JSON response can be accessed from the API at `/api/3/action/status_list`. By default it only contains one status report: the number of queues with pending items. Additional status report items come from other CKAN extensions implementing the `IStatus` interface.
+
+To add status report items in another extension, add the `modify_status_reports` method of the `IStatus` interface in `plugin.py`:
+```python
+from ckan.plugins import SingletonPlugin, implements
+from ckanext.status.interfaces import IStatus
+
+class ExamplePlugin(SingletonPlugin):
+    implements(IStatus)
+
+    def modify_status_reports(self, status_reports):
+        status_reports.append({
+            'label': 'Example status',
+            'value': 'connected',
+            'group': 'Examples',  # can be omitted
+            'help': 'A description of what this means',
+            'state': 'good'  # valid values: good, ok, bad, neutral
+        })
+
+        return status_reports
 ```
 
 <!--usage-end-->
