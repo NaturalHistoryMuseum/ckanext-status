@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.4.1 (2024-07-15)
+
+### Fix
+
+- cache job list response
+
+### Build System(s)
+
+- add cachetools as a dependency
+
 ## v2.4.0 (2024-07-08)
 
 ### Feature
