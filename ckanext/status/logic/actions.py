@@ -6,6 +6,7 @@
 
 from ckan.plugins import toolkit, PluginImplementations
 from ckanext.status.interfaces import IStatus
+from ckanext.status.lib.utils import get_active_queues
 from ckantools.decorators import action
 from datetime import datetime as dt
 
@@ -22,20 +23,19 @@ status_schema = {'state': [ignore_missing, str]}
 def status_list(state=None):
     status_reports = []
 
-    jobs = toolkit.get_action('job_list')({'ignore_auth': True}, {})
-    pending_queues = set([j['queue'] for j in jobs])
+    pending_queues = get_active_queues()
 
     status_reports.append(
         {
             'label': toolkit._('Active queues'),
-            'value': len(pending_queues),
+            'value': pending_queues,
             'group': toolkit._('Queues'),
             'help': toolkit._(
                 'Number of queues with pending (not actively processing) items'
             ),
             'state': 'good'
-            if len(pending_queues) == 0
-            else ('ok' if len(pending_queues) < 3 else 'bad'),
+            if pending_queues < 2
+            else ('ok' if pending_queues < 4 else 'bad'),
         }
     )
 
