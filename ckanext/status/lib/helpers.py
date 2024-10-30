@@ -4,8 +4,8 @@
 # This file is part of ckanext-status
 # Created by the Natural History Museum in London, UK
 
-from ckan.plugins import toolkit
 import markdown
+from ckan.plugins import toolkit
 
 
 def status_enable_html():

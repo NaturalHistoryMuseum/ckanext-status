@@ -5,8 +5,8 @@
 # Created by the Natural History Museum in London, UK
 import pytest
 from ckan.plugins import toolkit
+
 from ckanext.status.lib.helpers import status_get_message
-import markdown
 
 TEST_MESSAGE = 'this is a test message'
 MARKDOWN_TEST_MESSAGE = '_this_ is a test **message**'

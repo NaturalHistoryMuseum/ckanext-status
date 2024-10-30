@@ -18,6 +18,6 @@ class IStatus(interfaces.Interface):
         Modify the list of items rendered on the status page.
 
         :param status_reports: items to present on the status page
-        :return: the modified list
+        :returns: the modified list
         """
         return status_reports
