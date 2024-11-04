@@ -4,17 +4,19 @@
 # This file is part of ckanext-status
 # Created by the Natural History Museum in London, UK
 
-from ckan.plugins import toolkit, PluginImplementations
+from datetime import datetime as dt
+
+from ckan.plugins import PluginImplementations, toolkit
+from ckantools.decorators import action
+
 from ckanext.status.interfaces import IStatus
 from ckanext.status.lib.utils import get_active_queues
-from ckantools.decorators import action
-from datetime import datetime as dt
 
 ignore_missing = toolkit.get_validator('ignore_missing')
 
-status_help = '''
+status_help = """
 A list of status reports from across the system.
-'''
+"""
 
 status_schema = {'state': [ignore_missing, str]}
 

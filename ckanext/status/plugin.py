@@ -5,9 +5,10 @@
 # Created by the Natural History Museum in London, UK
 
 from ckan.plugins import SingletonPlugin, implements, interfaces, toolkit
-from ckanext.status.lib.helpers import status_get_message, status_enable_html
-from ckanext.status import routes
 from ckantools.loaders import create_actions, create_auth
+
+from ckanext.status import routes
+from ckanext.status.lib.helpers import status_enable_html, status_get_message
 
 
 class StatusPlugin(SingletonPlugin):

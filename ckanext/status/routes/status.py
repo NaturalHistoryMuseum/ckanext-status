@@ -6,9 +6,8 @@
 
 import itertools
 
-from flask import Blueprint
-
 from ckan.plugins import toolkit
+from flask import Blueprint
 
 blueprint = Blueprint(name='status', import_name=__name__, url_prefix='/status')
 

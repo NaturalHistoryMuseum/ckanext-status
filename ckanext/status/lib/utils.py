@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # encoding: utf-8
 
-from cachetools import cached, TTLCache
+from cachetools import TTLCache, cached
 from ckan.plugins import toolkit
 
 
