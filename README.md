@@ -3,7 +3,7 @@
 
 # ckanext-status
 
-[![Tests](https://img.shields.io/github/actions/workflow/status/NaturalHistoryMuseum/ckanext-status/main.yml?style=flat-square)](https://github.com/NaturalHistoryMuseum/ckanext-status/actions/workflows/main.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/NaturalHistoryMuseum/ckanext-status/tests.yml?style=flat-square)](https://github.com/NaturalHistoryMuseum/ckanext-status/actions/workflows/tests.yml)
 [![Coveralls](https://img.shields.io/coveralls/github/NaturalHistoryMuseum/ckanext-status/main?style=flat-square)](https://coveralls.io/github/NaturalHistoryMuseum/ckanext-status)
 [![CKAN](https://img.shields.io/badge/ckan-2.9.7-orange.svg?style=flat-square)](https://github.com/ckan/ckan)
 [![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue.svg?style=flat-square)](https://www.python.org/)
