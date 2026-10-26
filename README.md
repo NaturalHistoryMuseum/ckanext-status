@@ -110,17 +110,20 @@ To add status report items in another extension, add the `modify_status_reports`
 from ckan.plugins import SingletonPlugin, implements
 from ckanext.status.interfaces import IStatus
 
+
 class ExamplePlugin(SingletonPlugin):
     implements(IStatus)
 
     def modify_status_reports(self, status_reports):
-        status_reports.append({
-            'label': 'Example status',
-            'value': 'connected',
-            'group': 'Examples',  # can be omitted
-            'help': 'A description of what this means',
-            'state': 'good'  # valid values: good, ok, bad, neutral
-        })
+        status_reports.append(
+            {
+                'label': 'Example status',
+                'value': 'connected',
+                'group': 'Examples',  # can be omitted
+                'help': 'A description of what this means',
+                'state': 'good',  # valid values: good, ok, bad, neutral
+            }
+        )
 
         return status_reports
 ```
