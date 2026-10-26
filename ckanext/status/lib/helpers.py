@@ -19,7 +19,6 @@ def status_get_message():
     :returns: status message specified in config file (or None if not specified)
     :rtype: string
     """
-
     status_message = toolkit.config.get('ckanext.status.message', None)
     if status_message and status_enable_html():
         status_message = markdown.markdown(status_message)
